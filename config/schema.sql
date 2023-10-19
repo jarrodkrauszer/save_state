@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS meta_gg_db;
+
+CREATE DATABASE meta_gg_db;
