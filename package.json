@@ -1,0 +1,15 @@
+{
+  "name": "meta_gg",
+  "version": "1.0.0",
+  "description": "A videogame review database",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
