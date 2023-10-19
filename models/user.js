@@ -44,10 +44,10 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            min: {
-                arg: 6,
-                msg: 'Must be longer tahn 6 characters'
-            }
+          len: {
+            args: 6,
+            msg: 'Your password must be at least 6 characters in length'
+          }
         }
     },
     avatar: {

@@ -3,10 +3,14 @@ const { engine } = require('express-handlebars');
 const session = require('express-session');
 const db = require('./config/connection')
 const PORT = process.env.PORT || 3333;
+const path = require('path');
+require('dotenv').config(path.join(__dirname, '../.env'));
 
 
-// const view_routes = require('./controllers/view_routes');
-// const user_routes = require('./controllers/user_routes')
+const view_routes = require('./controllers/view_routes');
+const user_routes = require('./controllers/user_routes')
+const game_routes = require('./controllers/game_routes')
+const review_routes = require('./controllers/review_routes')
 
 const app = express();
 app.use(express.json());
@@ -16,7 +20,7 @@ app.use(express.urlencoded({extended: true}));
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
 app.use(session({
-    secret: 'TeiflingBard',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
 }));
@@ -24,10 +28,10 @@ app.use(session({
 app.use(express.static('./public'));
 
 
-// app.use('/', view_routes);
-// app.use('/auth', user_routes);
+app.use('/', [view_routes, game_routes, review_routes]);
+app.use('/auth', user_routes);
 
-db.sync({force: true})
+db.sync({force: false})
 .then(() => {
     app.listen(PORT, () => console.log(`happy surfing on ${PORT}`));
 });  
