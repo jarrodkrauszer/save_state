@@ -5,17 +5,17 @@ const { User, Review, Favorite, Game } = require('../models');
 
 
 router.get('/', authenticate, async (req, res) => {
-    const reviews = await Review.findAll({
-      include: {
-        model: User,
-        as: 'author'
-      }
-    });
+    // const reviews = await Review.findAll({
+    //   include: {
+    //     model: User,
+    //     as: 'author'
+    //   }
+    // });
   
-    res.render('landing', {
-      user: req.user,
-      reviews: reviews.map(r => r.get({ plain: true }))
-    });
+    res.render('landing')
+    //   user: req.user,
+    //   reviews: reviews.map(r => r.get({ plain: true }))
+    // });
   });
   
   // Show the register form
