@@ -4,22 +4,13 @@ const axios = require('axios');
 
 const baseURL = 'https://api.rawg.io/api'
 
-let gameList = [];
 
-router.get('/game', async (req, res) => {
+
+// (https://api.rawg.io/api/games?key=${apikey}&search=${gameName})
+
+router.get('/game/search', async (req, res) => {
   try {
-    const games = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}`);
-
-    // const games = await axios.get('https://api.rawg.io/api/gameskey=c604fbdc699c49b98500aa3c47cfd63b');
-
-    console.log(games);
-
-    gameList = games.data.results.map(game => {
-      return {
-        id: game.id,
-        name: game.name
-      };
-    });
+    const games = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search=${req.query.title}`);
     
     res.json(games.data);
 
