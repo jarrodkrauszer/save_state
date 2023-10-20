@@ -19,18 +19,17 @@ router.get('/', authenticate, async (req, res) => {
   });
   
   // Show the register form
-  router.get('/register', isLoggedIn, authenticate, (req, res) => {
+  router.get('/register',  (req, res) => {
     // Render the register form template
-    res.render('register_form', {
-      errors: req.session.errors,
-      user: req.user
-    });
+    res.render('register_form')
   
+    console.log('clicked register get route')
+    
     req.session.errors = [];
   });
   
   // GET route to show the login form
-  router.get('/login', isLoggedIn, authenticate, (req, res) => {
+  router.get('/login', (req, res) => {
     // Render the register form template
     res.render('login_form', {
       errors: req.session.errors,
