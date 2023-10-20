@@ -1,3 +1,7 @@
+body {
+    background-image: url(./space-invaders-1243673.jpg);
+}
+
 .custom-width {
     width: 400px;
     border-radius: 10px;
@@ -6,8 +10,27 @@
 
 }
 
+.bg-primary {
+    height: 50px;
+}
+
 .nav-margin {
     margin-right: 30px;
+    margin-bottom: 15px;
+   
+}
+
+.reg-btn {
+    background-color: green;
+}
+
+.login-btn {
+    background-color: yellow;
+    color: red;
+}
+
+.logout-btn {
+    background-color: red;
 }
 
 p footer {
@@ -26,3 +49,32 @@ p footer {
     display: flex;
     justify-content: center;
 }
+
+.gamer {
+    display: flex;
+    justify-content: center;
+    /* Color add colorwhich matches color scheme */
+    color: #17569b;
+    margin-top: 450px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+}
+/* most of these colors will chnage to may=tch the color scheme we choose */
+.player-btn {
+    background-color: #17569b;
+    color: red;
+    border-radius: 15px;
+}
+
+.player {
+    background-color: #71D69A;
+    color: #D671AD;
+    border-radius: 15px;
+    text-align: center;
+}
+
