@@ -1,18 +1,25 @@
+/* VARIABLES  */
+:root {
+    --theme-color-black:  #030301ff;
+    --theme-color--battleship-gray: #939598ff;
+    --theme-color--steel-blue: #467ea5ff;
+    --theme-colo--white: #ffffffff;
+}
+
 /* body {
     background-image: url(./space-invaders-1243673.jpg);
 } */
 
+.navbar {
+    background-color: var(--theme-color--steel-blue);
+    height: 50px;
+}
 
 .custom-width {
     width: 400px;
     border-radius: 10px;
     border: 0px;
     outline: none;
-
-}
-
-.bg-primary {
-    height: 50px;
 }
 
 .nav-margin {
@@ -22,16 +29,16 @@
 }
 
 .reg-btn {
-    background-color: green;
+    background-color: var(--theme-color--battleship-gray);
 }
 
 .login-btn {
-    background-color: yellow;
+    background-color:var(--theme-colo--white);
     color: red;
 }
 
 .logout-btn {
-    background-color: red;
+    background-color: var(--theme-color--battleship-gray);
 }
 
 p footer {
@@ -84,10 +91,25 @@ p footer {
 }
 
 .footer {
+    background-color: var(--theme-color--steel-blue);
     height: 50px;
-    text-align: center;
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+.about_btn {
+    background-color: var(--theme-color--battleship-gray);
+    margin-top: 5px;
+}
+
+.footer-icon {
+    padding-left: 50%;
+}
+
+.footer p {
+    text-align: right;
+    margin-bottom: 25px;
+
 }
 
