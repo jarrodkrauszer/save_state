@@ -1,6 +1,6 @@
-body {
+/* body {
     background-image: url(./space-invaders-1243673.jpg);
-}
+} */
 
 .custom-width {
     width: 400px;
@@ -77,4 +77,5 @@ p footer {
     border-radius: 15px;
     text-align: center;
 }
+
 
