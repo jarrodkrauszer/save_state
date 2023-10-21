@@ -1,65 +1,87 @@
-<div>
+<section>
+  {{#with game}}
+  <div>
     <div class="row">
-        <div class="game_name"></div>
-    <table class="game_info">
-        <tbody>
+      <div class="game_name">{{game_name}}</div>
+        <table class="game_info">
+          <tbody>
             <tr>
-                <th>Publisher</th>
-                    <td colspan="2">
-                        <span itemprop="byPublisher">
-                            <a title="" itemprop="name" href="" class="publisher"></a>
-                        </span>
-                    </td>
+              <th>Publisher</th>
+              <td colspan="2">
+                <span itemprop="byPublisher">
+                  <a title="" itemprop="name" href="" class="publisher">Rockstar Games</a>
+                </span>
+              </td>
             </tr>
             <tr>
-                <th>Developer</th>
-                    <td colspan="2">
-                        <span itemprop="byDeveloper">
-                            <a title="" itemprop="name" href="" class="developer"></a>
-                        </span>
-                    </td>
+              <th>Developer</th>
+              <td colspan="2">
+                <span itemprop="byDeveloper">
+                  <a title="" itemprop="name" href="" class="developer">Rockstar Games</a>
+                </span>
+              </td>
             </tr>
             <tr>
-                <th>Release Date</th>
-                    <td colspan="2">
-                        <span itemprop="release_date"></span>
-                    </td>
+              <th>Release Date</th>
+                <td colspan="2">
+                  <span itemprop="release_date">{{release_date}}</span>
+                </td>
             </tr>
             <tr>
-                <th>Save State rating</th>
-                    <td colspan="2">
-                        <span itemprop="rating"></span>
-                    </td>
+              <th>Save State rating</th>
+                <td colspan="2">
+                  <span itemprop="rating"></span>
+                </td>
             </tr>
             <tr>
-                <th>Genre</th>
-                    <td colspan="2">
-                        <span itemprop="genre"></span>
-                    </td>
+              <th>Genre</th>
+                <td colspan="2">
+                  <span itemprop="genre">{{genre}}</span>
+                </td>
             </tr>
             <tr>
-                <th>Description</th>
-                    <td colspan="2">
-                        <span itemprop="description"></span>
-                    </td>
+              <th>Description</th>
+                <td colspan="2">
+                  <span itemprop="description">{{description}}</span>
+                </td>
             </tr>
             <tr>
-                <th>Languages</th>
-                    <td colspan="2">
-                        <span itemprop="languages"></span>
-                    </td>
+              <th>Languages</th>
+                <td colspan="2">
+                  <span itemprop="languages"></span>
+                </td>
             </tr>
-        </tbody>
-    </table>
-</div>
-<div id="column_container_left" class="container_left">
-    <div class="cover_art">
-        <span itemprop="thumbnail"></span>
-    </div>
-    <div class="launcher_links_container">
-        <a target="_blank" rel="nooper follow" title="Steam" aria-label="Open in Steam Launcher" 
-        class="ui_media_link_btn ui_media_link_btn_steam" href=""></a>
-         <a target="_blank" rel="nooper follow" title="Epic Games" aria-label="Open in Epic Games Launcher" 
-         class="ui_media_link_btn ui_media_link_btn_epicgames" href=""></a>
-    </div>
-</div>
+          </tbody>
+      </table>
+  </div>
+  <div id="column_container_left" class="container_left">
+      <div class="cover_art">
+          <img src="{{thumbnail}}" class="card-img-top" alt="{{game_name}}">
+      </div>
+      <div class="launcher_links_container">
+          <a target="_blank" rel="nooper follow" title="Steam" aria-label="Open in Steam Launcher" 
+          class="ui_media_link_btn ui_media_link_btn_steam" href=""></a>
+          <a target="_blank" rel="nooper follow" title="Epic Games" aria-label="Open in Epic Games Launcher" 
+          class="ui_media_link_btn ui_media_link_btn_epicgames" href=""></a>
+      </div>
+  </div>
+  {{/with }}
+  {{#each reviews}}
+  <div id="reviews_shell">
+      <div class="review_page_section">
+          <div class="reviews_header">
+              <h2>Reviews</h2>
+          </div>
+          <div class="review">
+              <div class="review_header"></div>
+              <div class="review_body">
+                  <span>
+                      <span class="rendered_text">{{review_text}}</span>
+                  </span>
+                  <div class="review_publish_date">Publushed on</div>
+              </div>
+          </div>
+      </div>
+  </div>
+  {{/each}}
+</section>

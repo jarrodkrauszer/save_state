@@ -23,13 +23,15 @@ router.get('/', authenticate, async (req, res) => {
             'thumbnail'
           ]
         }
-      ]
+      ],
+      order: [['createdAt', 'DESC']],
+      limit: 8
     });
   
     res.render('landing', {
       errors: req.session.errors,
       user: req.user,
-      reviews: reviews.map(c => c.get({ plain: true })),
+      reviews: reviews.map(r => r.get({ plain: true })),
     });
 
   });
@@ -58,6 +60,47 @@ router.get('/', authenticate, async (req, res) => {
       errors: req.session.errors,
       user: req.user,
     });
+  });
+
+  router.get('/reviews/:id', async (req, res) => {
+    console.log(req.params.id);
+    try {
+      const game = await Game.findByPk(req.params.id);
+      console.log(game);
+      const reviews = await Review.findAll({
+        where: {
+          game_id: req.params.id
+        },
+        include: [
+          {
+            model: User,
+          },
+          {
+            model: Game,
+            attributes: [
+              'id',
+              'game_name',
+              'description',
+              'thumbnail'
+            ]
+          }
+        ],
+      });
+
+      // reviews: reviews.map(r => r.get({ plain: true })),
+
+      res.render('reviews', {
+        errors: req.session.errors,
+        user: req.user,
+        game: game.get({ plain: true }),
+        reviews: reviews.map(r => r.get({ plain: true })),
+      });
+
+    } catch (err) {
+      console.log(err);
+      res.send(err);
+    }
+    
   });
 
   router.get('/game', async (req, res) => {
