@@ -24,7 +24,7 @@ Game.init({
         }
     },
     description: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     },
     thumbnail: {
         type: DataTypes.STRING,
@@ -36,8 +36,7 @@ Game.init({
     release_date: {
         type: DataTypes.DATE,
         allowNull: false
-    }
-    
+    } 
 },
 
     {

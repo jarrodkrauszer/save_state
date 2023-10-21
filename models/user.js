@@ -53,9 +53,8 @@ User.init({
     avatar: {
         type: DataTypes.STRING,
     }
-},
-
-    {
+  },
+  {
         modelName: 'user',
         freezeTableName: true,
         sequelize: db,
@@ -65,8 +64,12 @@ User.init({
                 return user;
             }
         }
-    })
+  })
 
-
+  User.prototype.validatePass = async function (form_password) {
+    const is_valid = await compare(form_password, this.password);
+  
+    return is_valid;
+  }
 
 module.exports = User

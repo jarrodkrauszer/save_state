@@ -1,11 +1,14 @@
 <form class="standard-form" action="/auth/register" method="POST">
-  <h1>Load In!</h1>
+  <h1 class="gamer">Load In!</h1>
 
   {{#each errors}}
     <p class="error text-center">{{this}}</p>
   {{/each}}
 
-  <input type="text" name="email" placeholder="Please enter your email address">
-  <input type="password" name="password" placeholder="Please enter your password">
-  <button>Submit</button>
+  <div class="container">
+  <input class="player" type="text" name="user_name" placeholder="Please chose your Gametag">
+  <input class="player" type="text" name="email" placeholder="Please enter your email address">
+  <input class="player" type="password" name="password" placeholder="Please enter your password">
+  <button class="player-btn">Ready Player</button>
+  </div>
 </form>
