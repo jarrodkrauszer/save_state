@@ -45,6 +45,10 @@ p footer {
     margin-top: 100px;
 }
 
+.review-card {
+  margin-bottom: 1rem;
+}
+
 .hero {
     display: flex;
     justify-content: center;
