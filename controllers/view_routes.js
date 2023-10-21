@@ -38,4 +38,8 @@ router.get('/', authenticate, async (req, res) => {
   
     req.session.errors = [];
   });
-module.exports = router;
+
+  router.get('/reviews', (req, res) => {
+    res.render('reviews')
+  });
+  module.exports = router;

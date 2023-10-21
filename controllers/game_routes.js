@@ -6,22 +6,31 @@ const baseURL = 'https://api.rawg.io/api'
 
 
 
-// (https://api.rawg.io/api/games?key=${apikey}&search=${gameName})
 
 router.get('/game/search', async (req, res) => {
   try {
-    const games = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search=${req.query.title}`);
+    const { data } = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search=${req.query.title}&search_exact=true`);
     
-    res.json(games.data);
+    let game;
+    let games;
 
+    res.redirect('/reviews')
+    if (data.results.length > 1) {
+      console.log('you have more than 1 result');
+      games = data.results;
+    } else if (data.results.length === 1) {
+      console.log('1 result returned');
+      game = data.results[0];
+      res.redirect('/reviews')
+    } else {
+      console.log('No results found');
+
+    }
   } catch (err) {
     console.log(err);
     res.send(err);
-    // Set our session errors array to an array of just sequelize error message stings
-    // req.session.errors = error.errors.map(err => err.message);
   }
-  
-});
+})
 
 router.post('/game', (req, res) => {
   const data = req.body;
