@@ -16,7 +16,7 @@
 
             <div class="d-flex flex-row mb-3 justify-content-sm-between">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="/">
                         <img src="/css/SaveScreenIcnLogo.png" alt="Logo" width="30" height="24"
                             class="d-inline-block align-text-top">
                         Save State
@@ -28,9 +28,12 @@
                 </form>
             </div>
             <div class="nav-margin">
+              {{#if user}}
+                <a href="/auth/logout"  class="btn btn-primary logout-btn"> Touch Grass</a>
+              {{else}}
                 <a href="/register"  class="btn btn-primary reg-btn"> Register</a>
                 <a href="/login"  class="btn btn-primary login-btn"> Login</a>
-                <a href="/auth/logout"  class="btn btn-primary logout-btn"> Touch Grass</a>
+              {{/if}}
             </div>
         </nav>
         <footer>

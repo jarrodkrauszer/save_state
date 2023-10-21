@@ -9,15 +9,12 @@ const searchButton = document.querySelector('#searchButton')
 
 async function getGameByName(gameName) {
     try {
-        const response = await fetch(`game/search?title=${gameName}`);
-        const data = await response.json();
-        if (data.results && data.results.length > 0) {    
-            const game = data.results[0];
-            return game;
-        } else {
-           
-            return null;
-        }
+      console.log('About to search a game!');
+        await fetch(`game?title=${gameName}`);
+        console.log(response);
+        console.log('About to Fetch reviews!');
+        fetch('/reviews');
+      
     } catch (error) {
        
         console.error('Error fetching game:', error);
@@ -30,14 +27,8 @@ searchButton.addEventListener('click', async () => {
     const inputValue = gameNameInput.value.trim();
     if (inputValue !== '') {
         try {
+          console.log('Get Name');
             const game = await getGameByName(inputValue);
-            if (game) {
-                const outputDiv = document.querySelector('#output');
-                outputDiv.textContent = `Game Title: ${game.name}, Game image: ${game.background_image} release date ${game.released}`;
-            } else {
-                const outputDiv = document.querySelector('#output');
-                outputDiv.textContent = 'Game not found';
-            }
         } catch (error) {
             console.error('Error:', error);
         }
