@@ -6,9 +6,9 @@
     --theme-colo--white: #ffffffff;
 }
 
-/* body {
-    background-image: url(./space-invaders-1243673.jpg);
-} */
+body {
+    background-color: var(--theme-color--battleship-gray);
+}
 
 .navbar {
     background-color: var(--theme-color--steel-blue);
@@ -26,6 +26,13 @@
     margin-right: 30px;
     margin-bottom: 15px;
    
+}
+.search-bar {
+    margin-bottom: 5px;
+ }
+.search-btn {
+    background-color:var(--theme-colo--white);
+    color: red;
 }
 
 .reg-btn {
@@ -66,7 +73,7 @@ p footer {
     display: flex;
     justify-content: center;
     /* Color add colorwhich matches color scheme */
-    color: #17569b;
+    color: var(--theme-color--steel-blue);
     margin-top: 450px;
 }
 
@@ -78,8 +85,8 @@ p footer {
 }
 /* most of these colors will chnage to may=tch the color scheme we choose */
 .player-btn {
-    background-color: #17569b;
-    color: red;
+    background-color: var(--theme-color--steel-blue);
+    color: var(--theme-colo--white);
     border-radius: 15px;
 }
 
@@ -100,17 +107,17 @@ p footer {
 
 .about_btn {
     background-color: var(--theme-color--battleship-gray);
-    margin-top: 5px;
 }
 
 .footer-icon {
-    padding-left: 50%;
+    padding-left: 45%;
+    max-height: 50px;
 }
 
-.footer p {
-    text-align: right;
-    margin-bottom: 25px;
-
+.footer .copyright {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
 }
 
 .container .star-widget input{
