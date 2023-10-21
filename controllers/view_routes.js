@@ -27,7 +27,7 @@ router.get('/', authenticate, async (req, res) => {
       order: [['createdAt', 'DESC']],
       limit: 8
     });
-  
+      
     res.render('landing', {
       errors: req.session.errors,
       user: req.user,
@@ -39,7 +39,10 @@ router.get('/', authenticate, async (req, res) => {
   // Show the register form
   router.get('/register',  (req, res) => {
     // Render the register form template
-    res.render('register_form')
+    res.render('register_form', {
+      errors: req.session.errors,
+      user: req.user
+    })
       
     req.session.errors = [];
   });
@@ -64,6 +67,7 @@ router.get('/', authenticate, async (req, res) => {
 
   router.get('/reviews/:id', async (req, res) => {
     try {
+      console.log(req.user);
       const game = await Game.findByPk(req.params.id);
       
       const reviews = await Review.findAll({

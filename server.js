@@ -20,10 +20,14 @@ app.use(express.urlencoded({extended: true}));
 // handlebar middleware
 app.engine('.hbs', engine({extname: '.hbs'}));
 app.set('view engine', '.hbs');
+
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: {
+      httpOnly: true
+    }
 }));
 
 app.use(express.static('./public'));

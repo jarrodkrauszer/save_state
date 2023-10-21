@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const Review = require('../models/Review');
+const { isLoggedIn, isAuthenticated, authenticate } = require('../utils');
 
-router.post('/reviews/:id', async (req, res) => {
+router.post('/reviews/:id', isAuthenticated, authenticate, async (req, res) => {
   try {
     console.log(req.body);
 
