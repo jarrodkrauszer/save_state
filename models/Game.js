@@ -24,7 +24,7 @@ Game.init({
         }
     },
     description: {
-        type: DataTypes.STRING
+        type: DataTypes.TEXT
     },
     thumbnail: {
         type: DataTypes.STRING,

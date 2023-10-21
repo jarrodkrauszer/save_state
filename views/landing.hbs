@@ -1,33 +1,12 @@
-{{!-- class card body will be a dexription of the game --}}
-{{!-- card ttile will be the name of the game --}}
-
 <section class="reviews">
-        <div class="card" style="width: 18rem;">
-            <img src="./css/SaveScreenIcnLogo.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="/reviews" class="btn btn-primary">See Review</a>
-            </div>
+    {{#each reviews}}
+      <div class="card" style="width: 18rem;">
+        <img src="{{game.thumbnail}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{game.game_name}}</h5>
+            <p class="card-text">{{game.description}}</p>
+            <a href="/reviews" class="btn btn-primary">See Reviews</a>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="./css/SaveScreenIcnLogo.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="/reviews" class="btn btn-primary">See Review</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="./css/SaveScreenIcnLogo.png" class="card-img-top" alt="...">
-            <div class="card-body">
-               <h5 class="card-title">Card title</h5> 
-               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="/reviews" class="btn btn-primary">See Review</a>
-            </div>
-        </div>
-
-    </section>
+      </div>
+    {{/each}}
+</section>

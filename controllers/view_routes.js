@@ -8,20 +8,23 @@ const baseURL = 'https://api.rawg.io/api'
 
 
 router.get('/', authenticate, async (req, res) => {
-    // const reviews = await Review.findAll({
-    //   include: {
-    //     model: User,
-    //     as: 'author'
-    //   }
-    // });
+    const reviews = await Review.findAll({
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Game
+        }
+      ]
+    });
   
     res.render('landing', {
       errors: req.session.errors,
       user: req.user,
+      reviews: reviews.map(c => c.get({ plain: true })),
     });
-    //   user: req.user,
-    //   reviews: games.map(g => g.name)
-    // });
+
   });
   
   // Show the register form
