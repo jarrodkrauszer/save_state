@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
+const { Op, literal } = require('sequelize');
 const { isLoggedIn, isAuthenticated, authenticate } = require('../utils');
 
 const { User, Review, Favorite, Game } = require('../models');
@@ -14,7 +15,13 @@ router.get('/', authenticate, async (req, res) => {
           model: User,
         },
         {
-          model: Game
+          model: Game,
+          attributes: [
+            'id',
+            'game_name',
+            [literal("substring(description, 1, 100)"), 'description'], // Limit the description field to the first 50 characters
+            'thumbnail'
+          ]
         }
       ]
     });
