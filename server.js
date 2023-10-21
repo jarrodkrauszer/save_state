@@ -4,6 +4,7 @@ const session = require('express-session');
 const db = require('./config/connection')
 const PORT = process.env.PORT || 3333;
 const path = require('path');
+const methodOverride = require('method-override');
 require('dotenv').config(path.join(__dirname, '../.env'));
 
 
@@ -26,7 +27,7 @@ app.use(session({
 }));
 
 app.use(express.static('./public'));
-
+app.use(methodOverride('_method'));
 
 app.use('/', [view_routes, game_routes, review_routes]);
 app.use('/auth', user_routes);
