@@ -63,10 +63,9 @@ router.get('/', authenticate, async (req, res) => {
   });
 
   router.get('/reviews/:id', async (req, res) => {
-    console.log(req.params.id);
     try {
       const game = await Game.findByPk(req.params.id);
-      console.log(game);
+      
       const reviews = await Review.findAll({
         where: {
           game_id: req.params.id

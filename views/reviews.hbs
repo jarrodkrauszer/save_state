@@ -65,13 +65,21 @@
           class="ui_media_link_btn ui_media_link_btn_epicgames" href=""></a>
       </div>
   </div>
+  <form action="/reviews/{{id}}" method="POST" class="comment-form">
+      <header class="comment-header"></header>
+      <p>Review</p>
+      <textarea name="review_text" cols="30" rows="3" placeholder="Write your Blog"></textarea>
+      <button class="create-btn">Submit</button>
+  </form>
+
   {{/with }}
-  {{#each reviews}}
+
   <div id="reviews_shell">
       <div class="review_page_section">
           <div class="reviews_header">
               <h2>Reviews</h2>
           </div>
+          {{#each reviews}}
           <div class="review">
               <div class="review_header"></div>
               <div class="review_body">
