@@ -2,7 +2,7 @@ path = require('path')
 require('dotenv').config(path.join(__dirname, '../.env'));
 
 const Sequelize = require('sequelize');
-console.log(process.env.DB_PASSWORD);
+
 
 const sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
@@ -12,6 +12,7 @@ const sequelize = process.env.JAWSDB_URL
       dialectOptions: {
         decimalNumbers: true,
       },
+      logging: false
     });
 
 module.exports = sequelize;
