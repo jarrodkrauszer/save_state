@@ -2,14 +2,14 @@
   {{#with game}}
   <div>
     <div class="row">
-      <div class="game_name">{{game_name}}</div>
+      <div class="game_name">{{title}}</div>
         <table class="game_info">
           <tbody>
             <tr>
               <th>Publisher</th>
               <td colspan="2">
                 <span itemprop="byPublisher">
-                  <a title="" itemprop="name" href="" class="publisher">Rockstar Games</a>
+                  <a title="" itemprop="name" href="" class="publisher">{{publisher}}</a>
                 </span>
               </td>
             </tr>
@@ -17,7 +17,7 @@
               <th>Developer</th>
               <td colspan="2">
                 <span itemprop="byDeveloper">
-                  <a title="" itemprop="name" href="" class="developer">Rockstar Games</a>
+                  <a title="" itemprop="name" href="" class="developer">{{developer}}</a>
                 </span>
               </td>
             </tr>
@@ -30,7 +30,7 @@
             <tr>
               <th>Save State rating</th>
                 <td colspan="2">
-                  <span itemprop="rating"></span>
+                  <span itemprop="rating">{{rating}}</span>
                 </td>
             </tr>
             <tr>
@@ -43,12 +43,6 @@
               <th>Description</th>
                 <td colspan="2">
                   <span itemprop="description">{{description}}</span>
-                </td>
-            </tr>
-            <tr>
-              <th>Languages</th>
-                <td colspan="2">
-                  <span itemprop="languages"></span>
                 </td>
             </tr>
           </tbody>
@@ -73,7 +67,7 @@
   </form>
 
   {{/with }}
-  <div class="conteiner">
+  <div class="container">
       <div class="star-widget">
         <input type="radio" name="rate" id="rate-5">
         <label for="rate-5" class="fas fa-star"></label>
