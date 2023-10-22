@@ -1,0 +1,13 @@
+<section class="reviews">
+    {{#each results}}
+      <div class="card review-card" style="width: 18rem;">
+        <img src="{{thumbnail}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <a href="/reviews/{{id}}" class="btn btn-primary">Add a Review</a>
+        </div>
+      </div>
+    {{/each}}
+
+    
+</section>
