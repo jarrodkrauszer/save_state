@@ -11,7 +11,7 @@ Game.init({
         primaryKey: true,
         autoIncrement: true,
     },
-    game_name: {
+    title: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -36,7 +36,17 @@ Game.init({
     release_date: {
         type: DataTypes.STRING,
         allowNull: false
-    } 
+    },
+    rating: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    publisher: {
+      type: DataTypes.STRING,
+    },
+    developer: {
+      type: DataTypes.STRING,
+    },
 },
 
     {
