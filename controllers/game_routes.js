@@ -41,7 +41,6 @@ router.post('/games', async (req, res) => {
             });
           }
           gamesAdded++;
-        res.status(201).json({ message: 'Game Table Seeded!'});
         // console.log('Game added to the database:');
         })
         
@@ -51,7 +50,8 @@ router.post('/games', async (req, res) => {
     }
     
     }
-    
+    // res.status(201).json({ message: 'Game Table Seeded!'});
+
   } catch (error) {
     console.error('Error fetching/adding game:', error);
     res.status(500).json({ error: 'Internal Server Error' });
