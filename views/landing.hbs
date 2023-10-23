@@ -1,15 +1,12 @@
 <section class="reviews">
     {{#each reviews}}
-      <div class="card review-card" style="width: 18%;">
+      <div class="card review-card" style="width: 23%;">
         <img src="{{game.thumbnail}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{game.title}}</h5>
-            <h6 class="card-title">{{game.rating}} out of 5 <i class="fas fa-star" style="color: rgb(218, 187, 12);"></i>'s</h6>
-            <p class="card-text">{{{game.description}}}...</p>
+            <p class="card-text">{{{game.description}}}</p>
             <a href="/review/{{game_id}}" class="btn btn-primary">See Reviews</a>
         </div>
       </div>
     {{/each}}
-
-    
 </section>

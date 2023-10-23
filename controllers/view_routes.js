@@ -60,9 +60,9 @@ router.get('/login', (req, res) => {
 });
 
 router.get('/review/:id', isAuthenticated, authenticate, async (req, res) => {
-  
   try{
     const { data: game } = await axios.get(`${baseURL}/games/${req.params.id}?key=${process.env.API_KEY}`);
+    console.log(game)
     const reviews = await Review.findAll({
       where: {
         game_id: req.params.id
@@ -94,8 +94,10 @@ router.get('/review/:id', isAuthenticated, authenticate, async (req, res) => {
     reviews: reviews.map(r => r.get({ plain: true })),
     helpers: {
       getValues(arr) {
-        return arr.reduce((result, obj) => result += obj.name + ' ', '')
-          .trim();
+        if (Array.isArray(arr) && arr.length > 0) {
+          return arr.reduce((result, obj) => result += obj.name + ' ', '').trim();
+        }
+        return '';
       }
     }
   });
@@ -220,7 +222,7 @@ router.get('/top_rated', async (req, res) => {
       order: [['rating', 'DESC']],
       limit: 8
     });
-    console.log(games);
+    
     res.render('newly_released', {
       errors: req.session.errors,
       user: req.user,
@@ -236,26 +238,28 @@ router.get('/top_rated', async (req, res) => {
 
 router.get('/profile', authenticate, async (req, res) => {
   console.log(req.session.user_id);
-  const reviews = await Review.findAll({
-    where: {
-      user_id: req.session.user_id
-    },
-    include: [
-      {
-        model: User,
+
+    const reviews = await Review.findAll({
+      where: {
+        user_id: req.session.user_id
       },
-      {
-        model: Game,
-        attributes: [
-          'id',
-          'title',
-          [literal("substring(description, 1, 100)"), 'description'], // Limit the description field to the first 50 characters
-          'thumbnail'
-        ]
-      }
-    ],
-    order: [['createdAt', 'DESC']],
-    limit: 8
+      include: [
+        {
+          model: User,
+        },
+        {
+          model: Game,
+          attributes: [
+            'id',
+            'title',
+            [literal("substring(description, 1, 150)"), 'description'], // Limit the description field to the first 50 characters
+            'thumbnail',
+            'rating'
+          ]
+        }
+      ],
+      order: [['createdAt', 'DESC']],
+      limit: 8
   });
 
   res.render('profile', {
@@ -266,34 +270,6 @@ router.get('/profile', authenticate, async (req, res) => {
 
 });
 
-// router.post('/games', async (req, res) => {
-//   const gameName = req.query.title;
 
-//   try {
 
-//     const response = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search=${gameName}&search_exact=true`);
-//     const game = response.data.results[0];
-
-//     if (game) {
-//       const detailedResponse = await axios.get(`${baseURL}/games/${game.id}?key=${process.env.API_KEY}`);
-//       const finalGame = detailedResponse.data;
-//       const newGame = await Game.create({
-//         title: finalGame.name,
-//         description: finalGame.description,
-//         thumbnail: finalGame.background_image,
-//         genre: finalGame.genres[0].name,
-//         released_date: finalGame.released,
-//         publisher: finalGame.publishers[0].name,
-//         developer: finalGame.developers[0].name
-//       });
-//       res.status(201).json(newGame);
-//       console.log('Game added to the database:', newGame.toJSON());
-//     } else {
-//       res.status(404).json({ error: 'Game not found' });
-//     }
-//   } catch (error) {
-//     console.error('Error fetching/adding game:', error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
 module.exports = router;

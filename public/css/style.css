@@ -8,7 +8,7 @@
 
 body {
     background-color: var(--theme-color-gray);
-    font-family: 'Courier New', Courier, monospace
+    font-family: sans-serif;
 }
 
 .navbar {
@@ -30,7 +30,7 @@ body {
 
 .nav-margin {
     margin-right: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .nav-margin button {
@@ -90,8 +90,7 @@ body {
     font-size: x-large;
     font-family: sans-serif;
     text-align: center;
-    margin-bottom: 8rem;
-    margin-right: 5rem;
+    margin: 0 1rem 3.5rem 1rem;
     background-color: #f4f4f4;
 }
 
@@ -149,8 +148,8 @@ body {
     background: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
     height: 70px;
     width: 100%;
-    position: fixed;
-    bottom: 0;
+    /* position: fixed;
+    bottom: 0; */
 }
 
 .about_btn {
@@ -237,3 +236,84 @@ form .btn button {
 form .btn button:hover {
     background: #1b1b1b;
 }
+
+.cover_art{
+    width: 100px;
+}
+
+.cover_art img{
+    float: left;
+    margin-left: 0px 0px 0px 30px;
+    width:150 px;
+    height: 38p;
+}
+
+.flex-row {
+    display: flex;
+}
+.review-card-result {
+    box-shadow:  10px 10px 7px 0px rgba(0,0,0,0.62);
+    font-size: large;
+    font-family: sans-serif;
+    text-align: center;
+    margin: 4.5rem 1rem 3.5rem 1rem;
+    background-color: #f4f4f4;
+}
+
+.review-desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin:0 3rem;
+}
+
+.review-title {
+    font-weight: bold;
+}
+
+.review-desc p {
+font-size: larger;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 300px;
+    width: 800px;
+}
+
+.create-btn {
+    padding: 1rem 0;
+    margin-top: 1rem;
+    border-radius: 10px;
+    font-size: x-large;
+}
+
+.reviews-shell {
+    width: 800px; 
+    margin: 0 auto;
+    margin-bottom: 3rem; 
+    text-align: center; 
+}
+
+.review {
+    border: solid 1px black;  
+    color: rgb(200, 201, 201);
+    border-radius: 20px;
+    background-color:rgb(4, 90, 151);
+    margin-bottom: 20px;
+    font-weight: bold; 
+}
+
+.review_publish_date {
+    font-style: italic; 
+}
+
+.review-header {
+    text-align: center; 
+    margin-bottom: 20px; 
+    font-size: 2rem;
+    font-weight: bold;
+}
+
