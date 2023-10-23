@@ -26,10 +26,10 @@
                             class="d-inline-block align-text-top">
                     </a>
                 </div>
-                <form class="d-flex" role="search">
-                    <input class="me-2 custom-width search-bar" id="gameTitle" type="search" placeholder="Inventory"
+                <form class="d-flex" action="/search" method="POST">
+                    <input class="me-2 custom-width search-bar"  name="title" type="search" placeholder="Inventory"
                         aria-label="Search">
-                    <button class="btn search-btn" id='searchButton' type="submit">search</button>
+                    <button class="btn search-btn" type="submit">search</button>
                 </form>
 
             </div>

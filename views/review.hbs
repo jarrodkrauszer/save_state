@@ -6,25 +6,29 @@
         <table class="game_info">
           <tbody>
             <tr>
-              <th>Publisher</th>
+              <th>Publishers</th>
               <td colspan="2">
+                {{#each publishers}}
                 <span itemprop="byPublisher">
-                  <a title="" itemprop="name" href="" class="publisher">{{publisher}}</a>
-                </span>
+                  <a title="" itemprop="name" href="" class="publisher">{{this.name}}</a>
+                </span>                
+                {{/each}}
               </td>
             </tr>
             <tr>
               <th>Developer</th>
               <td colspan="2">
+               {{#each developers}} 
                 <span itemprop="byDeveloper">
-                  <a title="" itemprop="name" href="" class="developer">{{developer}}</a>
+                  <a title="" itemprop="name" href="" class="developer">{{this.name}}</a>
                 </span>
+               {{/each}}
               </td>
             </tr>
             <tr>
               <th>Release Date</th>
                 <td colspan="2">
-                  <span itemprop="release_date">{{release_date}}</span>
+                  <span itemprop="release_date">{{released}}</span>
                 </td>
             </tr>
             <tr>
@@ -36,13 +40,13 @@
             <tr>
               <th>Genre</th>
                 <td colspan="2">
-                  <span itemprop="genre">{{genre}}</span>
+                  <span itemprop="genre">{{{genre}}}</span>
                 </td>
             </tr>
             <tr>
               <th>Description</th>
                 <td colspan="2">
-                  <span itemprop="description">{{description}}</span>
+                  <span itemprop="description">{{{description}}}</span>
                 </td>
             </tr>
           </tbody>
@@ -50,7 +54,7 @@
   </div>
   <div id="column_container_left" class="container_left">
       <div class="cover_art">
-          <img src="{{thumbnail}}" class="card-img-top" alt="{{game_name}}">
+          <img src="{{background_image}}" class="card-img-top" alt="{{game_name}}">
       </div>
       <div class="launcher_links_container">
           <a target="_blank" rel="nooper follow" title="Steam" aria-label="Open in Steam Launcher" 
