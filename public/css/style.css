@@ -88,13 +88,26 @@ p footer {
     margin-top: 25px;
 }
 
-.review-card {
+.review-card  {
+    box-shadow:  10px 10px 7px 0px rgba(0,0,0,0.62);
+    font-size: x-large;
     font-family: sans-serif;
     text-align: center;
     margin-bottom: 8rem;
     margin-right: 5rem;
+    background-color: #f4f4f4;
 }
 
+.review-card h5 {
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.review-card h6 {
+   border-bottom: solid #000;
+   padding-bottom: .5rem;
+}
+ 
 .gamer {
     display: flex;
     justify-content: center;
@@ -112,12 +125,14 @@ p footer {
     display: flex;
     align-content: center;
     justify-content: center;
+    margin-bottom: 38rem;
 
 }
 
 .player-btn {
   padding: 10px 20px;
-  font-size: 16px;
+  font-weight: bold;
+  font-size: 1.5rem;
   color: #fff;
   border-radius: 15px;
   background-image: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
@@ -129,12 +144,16 @@ p footer {
     color: #D671AD;
     border-radius: 15px;
     text-align: center;
+   height: 3rem;
+    margin-bottom: .5rem;
 }
 
 .footer {
     background: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
     height: 50px;
     width: 100%;
+    position: fixed;
+    bottom: 0;
 }
 
 .about_btn {
