@@ -88,6 +88,7 @@ router.get('/reviews/:id', async (req, res) => {
             'developer',
             'rating',
             'released_date'
+
           ]
         }
       ],
@@ -135,7 +136,6 @@ router.get('/search', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
 
 router.get('/game', async (req, res) => {
   try {
