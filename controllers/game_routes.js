@@ -1,27 +1,58 @@
 const router = require('express').Router();
 const Game = require('../models/Game');
 
+router.post('/games', async (req, res) => {
+  const gameName = req.query.title;
 
-router.post('/game', (req, res) => {
-  const data = req.body;
+  try {
+    let response = '';
+    for (x = 0; x < 125; x++) {
+      if (x<1) {
+        response = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search_exact=true`);
+      } else {
+        response = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search_exact=true&page=${++x}`);
+      }
+      
+    
+    const game = response.data.results;
+    ;
+    // console.log(response.data.results);
 
-  if (!data.game_name || !data.genre || !data.release_date)
-  {
-    return res.status(400).json({
-      message: 'All fields must be completed!'
-    });
+    if (game) {
+      game.forEach(async game => {
+        const detailedResponse = await axios.get(`${baseURL}/games/${game.id}?key=${process.env.API_KEY}`);
+        const finalGame = detailedResponse.data;
+        if(finalGame.name.length < 1 || finalGame.name === null) {
+          console.log('Bad Name: ', finalGame.name)
+        }
+        console.log(finalGame.name);
+        if (finalGame.name.length > 0 && finalGame.released !== null && finalGame.name !== null && finalGame.name !== '911 Operator' && finalGame.name !== '2064: Read Only Memories' && finalGame.name !== '140' && finalGame.name !== '112 Operator') {
+          const newGame = await Game.create({
+            title: finalGame.name,
+            description: finalGame.description_raw,
+            thumbnail: finalGame.background_image,
+            genre: finalGame.genres.length > 0 ? finalGame.genres[0].name : '',
+            released_date: finalGame.released,
+            publisher: finalGame.publishers.length > 0 ? finalGame.publishers[0].name : '',
+            developer: finalGame.developers.length > 0 ? finalGame.developers[0].name : '',
+            rating: finalGame.rating
+          });
+        }
+        
+      // res.status(201).json(newGame);
+      // console.log('Game added to the database:');
+      })
+      
+    } else {
+      res.status(404).json({ error: 'Game not found' });
+    }
+    }
+    
+  } catch (error) {
+    console.error('Error fetching/adding game:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
-
-  for (let prop in data) {
-    const val = data[prop];
-    if (typeof val === 'string') data[prop] = val.trim();
-  }
-
-  Game.create(data)
-    .then(newGame => {
-      res.json(newGame);
-    });
-
 });
+
 
 module.exports = router;
