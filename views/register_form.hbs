@@ -1,14 +1,16 @@
-<form class="standard-form" action="/auth/register" method="POST">
-  <h1 class="gamer">load in!</h1>
+<div class="div-form">
+  <form class="standard-form" action="/auth/register" method="POST">
+    <h1 class="gamer">load in!</h1>
 
-  {{#each errors}}
+    {{#each errors}}
     <p class="error text-center">{{this}}</p>
-  {{/each}}
+    {{/each}}
 
-  <div class="container">
-  <input class="player" type="text" name="user_name" placeholder="please choose your gamertag">
-  <input class="player" type="text" name="email" placeholder="please enter your email address">
-  <input class="player" type="password" name="password" placeholder="please enter your password">
-  <button class="player-btn">ready player</button>
-  </div>
+    <div class="container-form">
+      <input class="player" type="text" name="user_name" placeholder="please choose your gamertag">
+      <input class="player" type="text" name="email" placeholder="please enter your email address">
+      <input class="player" type="password" name="password" placeholder="please enter your password">
+      <button class="player-btn">ready player</button>
+    </div>
+</div>
 </form>
