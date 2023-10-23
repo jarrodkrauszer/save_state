@@ -68,9 +68,9 @@ body {
     
 }
 
-p footer {
+/* p footer {
     text-justify: center;
-}
+} */
 
 .game {
     display: flex;

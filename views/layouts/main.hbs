@@ -37,14 +37,14 @@
                 </form>
 
             </div>
-            <div class="nav-margin user-btn">
-                <a href="/top_rated" class="btn btn-primary">top rated</a>
-                <a href="/profile" class="btn btn-primary">profile</a>
+            <div class="nav-margin">
+                <a href="/top_rated" class="btn btn-primary rated-btn">top rated</a>
+                <a href="/profile" class="btn btn-primary prof-btn">profile</a>
                 {{#if user}}
-                <a href="/auth/logout" class="btn btn-primary"> touch grass</a>
+                <a href="/auth/logout" class="btn btn-primary logout-btn"> touch grass</a>
                 {{else}}
-                <a href="/register" class="btn btn-primary"> register</a>
-                <a href="/login" class="btn btn-primary"> login</a>
+                <a href="/register" class="btn btn-primary reg-btn"> register</a>
+                <a href="/login" class="btn btn-primary login-btn"> login</a>
                 {{/if}}
             </div>
         </nav>
