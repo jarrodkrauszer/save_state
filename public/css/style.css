@@ -54,7 +54,8 @@ body {
 .login-btn,
 .newly-btn,
 .rated-btn,
-.prof-btn
+.prof-btn,
+.search-btn
 { 
     background-color: var(--theme-color-white);
     color: var(--theme-color-black);
@@ -71,6 +72,14 @@ p footer {
     text-justify: center;
 }
 
+.game {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
 .reviews {
     display: flex;
     flex: row;
@@ -80,21 +89,29 @@ p footer {
 }
 
 .review-card {
+    font-family: sans-serif;
     margin-bottom: 1rem;
+    margin-right: 5rem;
 }
 
 .gamer {
     display: flex;
     justify-content: center;
     color: var(--theme-color--blue);
-    margin-top: 450px;
 }
 
-.container {
+ .standard-form, .container-form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-content: center;
     width: 500px;
+} 
+
+.div-form {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
 }
 
 .player-btn {
