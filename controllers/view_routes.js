@@ -124,7 +124,6 @@ router.get('/search', async (req, res) => {
       "thumbnail": game.background_image
     }
 
-    console.log(newGame)
     // const reviews = []; need to fetch reviews data from your database or API
     res.render('search', {
       errors: req.session.errors,
@@ -175,7 +174,6 @@ router.get('/game', async (req, res) => {
       
 
     }
-    console.log('Review!', req.query.title);
 
 
     res.status(200).json({ message: 'Got games!' });
@@ -186,5 +184,87 @@ router.get('/game', async (req, res) => {
     res.send(err);
   }
 })
+
+router.get('/newly_released', async (req, res) => {
+  try {
+    const games = await Game.findAll({
+      include: [
+        {
+          model: Review,
+        }
+      ],
+      order: [['released_date', 'DESC']],
+      limit: 8
+    });
+
+    res.render('newly_released', {
+      errors: req.session.errors,
+      user: req.user,
+      games: games.map(g => g.get({ plain: true }))
+    });
+  
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+  
+});
+
+router.get('/top_rated', async (req, res) => {
+  try {
+    const games = await Game.findAll({
+      include: [
+        {
+          model: Review,
+        }
+      ],
+      order: [['rating', 'DESC']],
+      limit: 8
+    });
+    console.log(games);
+    res.render('newly_released', {
+      errors: req.session.errors,
+      user: req.user,
+      games: games.map(g => g.get({ plain: true }))
+    });
+  
+  } catch (err) {
+    console.log(err);
+    res.send(err);
+  }
+  
+});
+
+router.get('/profile', authenticate, async (req, res) => {
+  console.log(req.session.user_id);
+  const reviews = await Review.findAll({
+    where: {
+      user_id: req.session.user_id
+    },
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Game,
+        attributes: [
+          'id',
+          'title',
+          [literal("substring(description, 1, 100)"), 'description'], // Limit the description field to the first 50 characters
+          'thumbnail'
+        ]
+      }
+    ],
+    order: [['createdAt', 'DESC']],
+    limit: 8
+  });
+
+  res.render('profile', {
+    errors: req.session.errors,
+    user: req.user,
+    reviews: reviews.map(r => r.get({ plain: true })),
+  });
+
+});
 
 module.exports = router;
