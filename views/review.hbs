@@ -1,118 +1,61 @@
 <section>
   {{#with game}}
-  <div>
-    <div class="row">
-      <div class="game_name">{{title}}</div>
-        <table class="game_info">
-          <tbody>
-            <tr>
-              <th>Publishers</th>
-              <td colspan="2">
-                {{#each publishers}}
-                <span itemprop="byPublisher">
-                  <a title="" itemprop="name" href="" class="publisher">{{this.name}}</a>
-                </span>                
-                {{/each}}
-              </td>
-            </tr>
-            <tr>
-              <th>Developer</th>
-              <td colspan="2">
-               {{#each developers}} 
-                <span itemprop="byDeveloper">
-                  <a title="" itemprop="name" href="" class="developer">{{this.name}}</a>
-                </span>
-               {{/each}}
-              </td>
-            </tr>
-            <tr>
-              <th>Release Date</th>
-                <td colspan="2">
-                  <span itemprop="release_date">{{released}}</span>
-                </td>
-            </tr>
-            <tr>
-              <th>Save State rating</th>
-                <td colspan="2">
-                  <span itemprop="rating">{{rating}}</span>
-                </td>
-            </tr>
-            <tr>
-              <th>Genre</th>
-                <td colspan="2">
-                  <span itemprop="genre">{{{genre}}}</span>
-                </td>
-            </tr>
-            <tr>
-              <th>Description</th>
-                <td colspan="2">
-                  <span itemprop="description">{{{description}}}</span>
-                </td>
-            </tr>
-          </tbody>
-      </table>
-  </div>
-  <div id="column_container_left" class="container_left">
-      <div class="cover_art">
-          <img src="{{background_image}}" class="card-img-top" alt="{{game_name}}">
+  <div class="flex-row">
+    <div>
+      <div class="card review-card-result" style="width: 18rem;">
+        <img src="{{background_image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h2>Publishers: </h2>
+          <p>{{#each publishers}}
+            <a title="" itemprop="name" href="" class="publisher">{{this.name}}</a>
+            {{/each}}
+          </p>
+
+          <h2>Developers: </h2>
+          <p>
+            {{#each developers}}
+            <a title="" itemprop="name" href="" class="developer">{{this.name}}</a>
+            {{/each}}
+          </p>
+
+          <p>Released Date: {{released}}</p>
+          <p>Genre: {{{genre}}}</p>
+        </div>
       </div>
-      <div class="launcher_links_container">
-          <a target="_blank" rel="nooper follow" title="Steam" aria-label="Open in Steam Launcher" 
-          class="ui_media_link_btn ui_media_link_btn_steam" href=""></a>
-          <a target="_blank" rel="nooper follow" title="Epic Games" aria-label="Open in Epic Games Launcher" 
-          class="ui_media_link_btn ui_media_link_btn_epicgames" href=""></a>
-      </div>
+    </div>
+
+    <div class="review-desc">
+      <h1 class="game_name review-title">{{name}}</h1>
+      <p>{{{description}}}</p>
+    </div>
+
   </div>
-  <form action="/review/{{id}}" method="POST" class="comment-form">
-      <header class="comment-header"></header>
-      <p>Review</p>
-      <textarea name="review_text" cols="30" rows="3" placeholder="Write your Blog"></textarea>
-      <input type="hidden" name="title" value="{{name}}">
-      <input type="hidden" name="id" value="{{id}}">
-      <input type="hidden" name="developers" value="{{getValues developers}}">
-      <input type="hidden" name="publishers" value="{{getValues publishers}}">
-      <input type="hidden" name="description" value="{{description}}">
-      <input type="hidden" name="rating" value="{{rating}}">
-      <input type="hidden" name="thumbnail" value="{{background_image}}">
-      <input type="hidden" name="genre" value="{{getValues genres}}">
-      <input type="hidden" name="released_date" value="{{released}}">
-      <button class="create-btn">Submit</button>
+  {{/with}}
+  <form action="/review/{{game.id}}" method="POST" class="comment-form flex-column">
+    <h1 class="review-header">Fire Your Review</h1>
+    <textarea name="review_text" cols="60" rows="5" placeholder="Leave your Review" class="review-area-text"></textarea>
+    <input type="hidden" name="title" value="{{name}}">
+    <input type="hidden" name="id" value="{{game.id}}">
+    <input type="hidden" name="developers" value="{{getValues developers}}">
+    <input type="hidden" name="publishers" value="{{getValues publishers}}">
+    <input type="hidden" name="description" value="{{description}}">
+    <input type="hidden" name="rating" value="{{rating}}">
+    <input type="hidden" name="thumbnail" value="{{background_image}}">
+    <input type="hidden" name="genre" value="{{getValues genres}}">
+    <input type="hidden" name="released_date" value="{{released}}">
+    <button class="create-btn">Fire</button>
   </form>
 
-  {{/with }}
-  <div class="container">
-      <div class="star-widget">
-        <input type="radio" name="rate" id="rate-5">
-        <label for="rate-5" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
-        <label for="rate-4" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
-        <label for="rate-3" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
-        <label for="rate-2" class="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
-        <label for="rate-1" class="fas fa-star"></label>
-        <form action="#">
-          <header></header>
-        </form>
-      </div>
+  <div class="reviews-shell">
+    <h2>Reviews</h2>
+    {{#each reviews}}
+    <div class="review">
+      <span>
+          <span class="rendered_text">{{review_text}}</span>
+        </span>
+        <div class="review_publish_date">Published by: {{user.email}}</div>
+    </div>
+    {{/each}}
   </div>
-  <div id="reviews_shell">
-      <div class="review_page_section">
-          <div class="reviews_header">
-              <h2>Reviews</h2>
-          </div>
-          {{#each reviews}}
-          <div class="review">
-              <div class="review_header"></div>
-              <div class="review_body">
-                  <span>
-                      <span class="rendered_text">{{review_text}}</span>
-                  </span>
-                  <div class="review_publish_date">Published on</div>
-              </div>
-          </div>
-      </div>
-  </div>
-  {{/each}}
+ 
 </section>
