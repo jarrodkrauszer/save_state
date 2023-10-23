@@ -49,16 +49,22 @@ body {
     margin: 0 5px;
 }
 
-.reg-btn {
-    background-color: var(--theme-color--gray);
+.reg-btn,
+.logout-btn,
+.login-btn,
+.newly-btn,
+.rated-btn,
+.prof-btn
+{ 
+    background-color: var(--theme-color-white);
+    color: var(--theme-color-black);
 }
 
-.login-btn {
-    background-color: var(--theme-color--gray);
-}
-
-.logout-btn {
-    background-color: var(--theme-color--gray);
+.hero {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
 }
 
 p footer {
@@ -77,15 +83,9 @@ p footer {
     margin-bottom: 1rem;
 }
 
-.hero {
-    display: flex;
-    justify-content: center;
-}
-
 .gamer {
     display: flex;
     justify-content: center;
-    /* Color add colorwhich matches color scheme */
     color: var(--theme-color--blue);
     margin-top: 450px;
 }
@@ -97,12 +97,14 @@ p footer {
     width: 500px;
 }
 
-/* most of these colors will change to match the color scheme we choose */
 .player-btn {
-    background-color: var(--theme-color--blue);
-    color: var(--theme-color--white);
-    border-radius: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 15px;
+  background-image: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
 }
+
 
 .player {
     background-color: #ffffff;
@@ -120,7 +122,8 @@ p footer {
 }
 
 .about_btn {
-    background-color: var(--theme-color--gray);
+    background-color: var(--theme-color-white);
+    color: var(--theme-color-black);
 }
 
 .footer-icon {
