@@ -63,10 +63,19 @@
           class="ui_media_link_btn ui_media_link_btn_epicgames" href=""></a>
       </div>
   </div>
-  <form action="/reviews/{{id}}" method="POST" class="comment-form">
+  <form action="/review/{{id}}" method="POST" class="comment-form">
       <header class="comment-header"></header>
       <p>Review</p>
       <textarea name="review_text" cols="30" rows="3" placeholder="Write your Blog"></textarea>
+      <input type="hidden" name="title" value="{{name}}">
+      <input type="hidden" name="id" value="{{id}}">
+      <input type="hidden" name="developers" value="{{getValues developers}}">
+      <input type="hidden" name="publishers" value="{{getValues publishers}}">
+      <input type="hidden" name="description" value="{{description}}">
+      <input type="hidden" name="rating" value="{{rating}}">
+      <input type="hidden" name="thumbnail" value="{{background_image}}">
+      <input type="hidden" name="genre" value="{{getValues genres}}">
+      <input type="hidden" name="released_date" value="{{released}}">
       <button class="create-btn">Submit</button>
   </form>
 
@@ -85,12 +94,6 @@
         <label for="rate-1" class="fas fa-star"></label>
         <form action="#">
           <header></header>
-          <div class="textarea">
-            <textarea cols="30"></textarea>
-          </div>
-          <div class="btn">
-            <button type="submit">Post Review</button>
-          </div>
         </form>
       </div>
   </div>
@@ -106,7 +109,7 @@
                   <span>
                       <span class="rendered_text">{{review_text}}</span>
                   </span>
-                  <div class="review_publish_date">Publushed on</div>
+                  <div class="review_publish_date">Published on</div>
               </div>
           </div>
       </div>

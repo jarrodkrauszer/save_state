@@ -1,14 +1,28 @@
 const router = require('express').Router();
 const Review = require('../models/Review');
+const Game = require('../models/Game');
 const { isLoggedIn, isAuthenticated, authenticate } = require('../utils');
 
-router.post('/reviews/:id', isAuthenticated, authenticate, async (req, res) => {
+router.post('/review/:id', isAuthenticated, authenticate, async (req, res) => {
+  
   try {
-    console.log(req.body);
+    const game_id = req.params.id;
+    console.log(game_id)
+    let game = await Game.findByPk(game_id);
 
-    await Review.create({ ...req.body, user_id: req.session.user_id, game_id: req.params.id });
+    if (!game) {
+      game = await Game.create({
+        ...req.body,
+      });
+    }
 
-    res.redirect(`/reviews/${req.params.id}`);
+    await Review.create({ 
+      user_id: req.user.id, 
+      game_id: req.params.id,
+      review_text: req.body.review_text
+    });
+
+    res.redirect(`/review/${req.params.id}`);
 
   } catch (err) {
     console.log(err);

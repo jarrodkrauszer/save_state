@@ -10,9 +10,9 @@ class Review extends Model {}
 Review.init({
     id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
         autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
     },
     review_text: {
         type: DataTypes.STRING,
