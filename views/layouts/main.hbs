@@ -33,18 +33,18 @@
                     <input class="me-2 custom-width search-bar"  name="title" type="search" placeholder="Inventory"
                         aria-label="Search">
                     <button class="btn search-btn" type="submit">search</button>
+                    
                 </form>
 
             </div>
-            <div class="nav-margin">
-                <a href="/newly_released" class="btn btn-primary newly-btn">newly released</a>
-                <a href="/top_rated" class="btn btn-primary rated-btn">top rated</a>
-                <a href="/profile" class="btn btn-primary prof-btn">profile</a>
+            <div class="nav-margin user-btn">
+                <a href="/top_rated" class="btn btn-primary">top rated</a>
+                <a href="/profile" class="btn btn-primary">profile</a>
                 {{#if user}}
-                <a href="/auth/logout" class="btn btn-primary logout-btn"> touch grass</a>
+                <a href="/auth/logout" class="btn btn-primary"> touch grass</a>
                 {{else}}
-                <a href="/register" class="btn btn-primary reg-btn"> register</a>
-                <a href="/login" class="btn btn-primary login-btn"> login</a>
+                <a href="/register" class="btn btn-primary"> register</a>
+                <a href="/login" class="btn btn-primary"> login</a>
                 {{/if}}
             </div>
         </nav>
@@ -59,7 +59,7 @@
 
     <footer>
         <nav class="footer">
-            <div class="container-fluid">
+            <div class="container-fluid footer-div">
                 {{!Will add in at a later date-- <a href="/about" class="btn btn-primary about_btn">the bots</a> --}}
                 <img class="footer-icon" src="/css/SaveStateTextLogo.png" alt="SaveStateText">
                 <p class="copyright">&copy Copyright 2023</p>
