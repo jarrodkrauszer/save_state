@@ -41,13 +41,10 @@ body {
     margin-bottom: 5px;
 }
 
-.search-btn,
-.reg-btn,
-.login-btn,
-.logout-btn
-{
-    margin: 5px;
+.rated-btn {
+    margin-left: 2rem;
 }
+
 
 .reg-btn,
 .logout-btn,
