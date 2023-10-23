@@ -1,18 +1,24 @@
 /* VARIABLES  */
 :root {
-    --theme-color-black:  #030301ff;
-    --theme-color--battleship-gray: #939598ff;
-    --theme-color--steel-blue: #467ea5ff;
-    --theme-colo--white: #ffffffff;
+    --theme-color-black: #030301ff;
+    --theme-color-gray: rgb(200, 201, 201);
+    --theme-color-blue: rgb(4, 90, 151);
+    --theme-color-white: #ffffffff;
 }
 
 body {
-    background-color: var(--theme-color--battleship-gray);
+    background-color: var(--theme-color-gray);
+    font-family: 'Courier New', Courier, monospace
 }
 
 .navbar {
-    background-color: var(--theme-color--steel-blue);
+    background: linear-gradient(to bottom, var(--theme-color-blue), var(--theme-color-gray));
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
 }
 
 .custom-width {
@@ -23,29 +29,36 @@ body {
 }
 
 .nav-margin {
-    margin-right: 30px;
+    margin-right: 20px;
     margin-bottom: 15px;
-   
 }
+
+.nav-margin button {
+    border-radius: 0;
+}
+
 .search-bar {
     margin-bottom: 5px;
- }
-.search-btn {
-    background-color:var(--theme-colo--white);
-    color: red;
+}
+
+.search-btn,
+.reg-btn,
+.login-btn,
+.logout-btn,
+.about-btn {
+    margin: 0 5px;
 }
 
 .reg-btn {
-    background-color: var(--theme-color--battleship-gray);
+    background-color: var(--theme-color--gray);
 }
 
 .login-btn {
-    background-color:var(--theme-colo--white);
-    color: red;
+    background-color: var(--theme-color--gray);
 }
 
 .logout-btn {
-    background-color: var(--theme-color--battleship-gray);
+    background-color: var(--theme-color--gray);
 }
 
 p footer {
@@ -61,7 +74,7 @@ p footer {
 }
 
 .review-card {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .hero {
@@ -73,7 +86,7 @@ p footer {
     display: flex;
     justify-content: center;
     /* Color add colorwhich matches color scheme */
-    color: var(--theme-color--steel-blue);
+    color: var(--theme-color--blue);
     margin-top: 450px;
 }
 
@@ -83,34 +96,35 @@ p footer {
     justify-content: center;
     width: 500px;
 }
-/* most of these colors will chnage to may=tch the color scheme we choose */
+
+/* most of these colors will change to match the color scheme we choose */
 .player-btn {
-    background-color: var(--theme-color--steel-blue);
-    color: var(--theme-colo--white);
+    background-color: var(--theme-color--blue);
+    color: var(--theme-color--white);
     border-radius: 15px;
 }
 
 .player {
-    background-color: #71D69A;
+    background-color: #ffffff;
     color: #D671AD;
     border-radius: 15px;
     text-align: center;
 }
 
 .footer {
-    background-color: var(--theme-color--steel-blue);
+    background: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
     height: 50px;
-    position: relative;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
 
 .about_btn {
-    background-color: var(--theme-color--battleship-gray);
+    background-color: var(--theme-color--gray);
 }
 
 .footer-icon {
-    padding-left: 45%;
+    padding-left: 35%;
     max-height: 50px;
 }
 
@@ -120,34 +134,39 @@ p footer {
     margin-bottom: 50px;
 }
 
-.container .star-widget input{
+.container .star-widget input {
     display: none;
 }
 
-.star-widget label{
+.star-widget label {
     font-size: 40px;
     color: dodgerblue;
     padding: 10px;
     float: right;
     transition: all 0.2s ease;
 }
-input:not(:checked) ~ label:hover,
-input:not(:checked) ~ label:hover ~ label{
+
+input:not(:checked)~label:hover,
+input:not(:checked)~label:hover~label {
     color: lightskyblue;
 }
-input:checked ~ label{
+
+input:checked~label {
     color: lightskyblue;
 }
-input#rate-5:checked ~ label{
+
+input#rate-5:checked~label {
     color: dodgerblue;
     text-shadow: 0 0 20px #952;
 }
-form .textarea{
+
+form .textarea {
     height: 100px;
     width: 100%;
     overflow: hidden;
 }
-form .textarea textarea{
+
+form .textarea textarea {
     height: 100%;
     width: 100;
     outline: none;
@@ -157,7 +176,8 @@ form .textarea textarea{
     padding: 10px;
     font-size: 17px;
 }
-form .btn button{
+
+form .btn button {
     height: 100%;
     width: 100%;
     border: 1px solid #444;
@@ -170,6 +190,7 @@ form .btn button{
     cursor: pointer;
     transition: all 0.3s ease;
 }
-form .btn button:hover{
+
+form .btn button:hover {
     background: #1b1b1b;
 }

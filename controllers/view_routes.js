@@ -18,7 +18,7 @@ router.get('/', authenticate, async (req, res) => {
           model: Game,
           attributes: [
             'id',
-            'game_name',
+            'title',
             [literal("substring(description, 1, 100)"), 'description'], // Limit the description field to the first 50 characters
             'thumbnail'
           ]
@@ -82,7 +82,7 @@ router.get('/', authenticate, async (req, res) => {
             model: Game,
             attributes: [
               'id',
-              'game_name',
+              'title',
               'description',
               'thumbnail'
             ]
