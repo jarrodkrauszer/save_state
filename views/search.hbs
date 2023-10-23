@@ -1,5 +1,21 @@
+
 <section class="reviews">
-    {{#each results}}
+    {{#each games}}
+      <div class="card review-card" style="width: 18rem;">
+        <img src="{{background_image}}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{name}}</h5>
+            <a href="/review/{{id}}" class="btn btn-primary">Add a Review</a>
+        </div>
+      </div>
+    {{else}}
+      <p>No games found.</p>
+    {{/each}}
+</section>
+
+{{!-- 
+<section class="reviews">
+    {{#each games}}
       <div class="card review-card" style="width: 18rem;">
         <img src="{{thumbnail}}" class="card-img-top" alt="...">
         <div class="card-body">
@@ -7,7 +23,7 @@
             <a href="/reviews/{{id}}" class="btn btn-primary">Add a Review</a>
         </div>
       </div>
+    {{else}}
+      <p>No games found.</p>
     {{/each}}
-
-    
-</section>
+</section> --}}
