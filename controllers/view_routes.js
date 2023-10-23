@@ -20,7 +20,8 @@ router.get('/', authenticate, async (req, res) => {
           'id',
           'title',
           [literal("substring(description, 1, 100)"), 'description'], // Limit the description field to the first 50 characters
-          'thumbnail'
+          'thumbnail',
+          'rating'
         ]
       }
     ],
