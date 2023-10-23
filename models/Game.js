@@ -41,10 +41,10 @@ Game.init({
       type: DataTypes.STRING,
       allowNull: false
     },
-    publisher: {
+    publishers: {
       type: DataTypes.STRING,
     },
-    developer: {
+    developers: {
       type: DataTypes.STRING,
     },
 },

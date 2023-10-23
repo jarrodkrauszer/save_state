@@ -58,21 +58,10 @@ router.get('/login', (req, res) => {
   req.session.errors = [];
 });
 
-router.get('/review/:id', async (req, res) => {
-  const { data: game } = await axios.get(`${baseURL}/games/${req.params.id}?key=${process.env.API_KEY}`);
-  console.log(game)
-  res.render('review', {
-    errors: req.session.errors,
-    user: req.user,
-    game,
-  });
-});
-
-router.get('/reviews/:id', async (req, res) => {
-  try {
-    console.log(req.user);
-    const game = await Game.findByPk(req.params.id);
-
+router.get('/review/:id', isAuthenticated, authenticate, async (req, res) => {
+  
+  try{
+    const { data: game } = await axios.get(`${baseURL}/games/${req.params.id}?key=${process.env.API_KEY}`);
     const reviews = await Review.findAll({
       where: {
         game_id: req.params.id
@@ -87,8 +76,8 @@ router.get('/reviews/:id', async (req, res) => {
             'title',
             'description',
             'thumbnail',
-            'publisher',
-            'developer',
+            'publishers',
+            'developers',
             'rating',
             'released_date'
 
@@ -97,26 +86,29 @@ router.get('/reviews/:id', async (req, res) => {
       ],
     });
 
-    // reviews: reviews.map(r => r.get({ plain: true })),
+  res.render('review', {
+    errors: req.session.errors,
+    user: req.user,
+    game,
+    reviews: reviews.map(r => r.get({ plain: true })),
+    helpers: {
+      getValues(arr) {
+        return arr.reduce((result, obj) => result += obj.name + ' ', '')
+          .trim();
+      }
+    }
+  });
+} catch (err) {
+  console.log(err);
+  res.send(err);
 
-    res.render('review', {
-      errors: req.session.errors,
-      user: req.user,
-      game: game.get({ plain: true }),
-      reviews: reviews.map(r => r.get({ plain: true })),
-    });
-
-  } catch (err) {
-    console.log(err);
-    res.send(err);
-  }
-
+}
 });
 
 // search one game
-router.post('/search', async (req, res) => {
+router.post('/search',authenticate, async (req, res) => {
   const gameName = req.body.title;
-  console.log(gameName)
+  
   try {
     const response = await axios.get(`${baseURL}/games?key=${process.env.API_KEY}&search=${gameName}&search_precise=true`);
     const games = response.data.results;
@@ -127,7 +119,7 @@ router.post('/search', async (req, res) => {
     //     }
     //   }
     // })
-    console.log(games)
+  
     // const reviews = []; need to fetch reviews data from your database or API
     res.render('search', {
       errors: req.session.errors,
