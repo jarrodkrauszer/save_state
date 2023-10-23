@@ -85,12 +85,12 @@ p footer {
     flex: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin-top: 100px;
+    margin-top: 25px;
 }
 
 .review-card {
     font-family: sans-serif;
-    margin-bottom: 1rem;
+    margin-bottom: 8rem;
     margin-right: 5rem;
 }
 
