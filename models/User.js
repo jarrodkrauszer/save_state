@@ -72,4 +72,8 @@ User.init({
     return is_valid;
   }
 
+<<<<<<< HEAD:models/user.js
 module.exports = User;
+=======
+module.exports = User
+>>>>>>> 426aa2ea6aac1603dbd9a0e201e6973492ec028d:models/User.js
