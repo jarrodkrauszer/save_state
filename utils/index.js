@@ -1,4 +1,4 @@
-const User = require('../models/User');
+const User = require('../models/User OLD');
 
 // Block an auth page if user is already logged in
 function isLoggedIn(req, res, next) {
