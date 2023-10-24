@@ -15,7 +15,7 @@ router.post('/review/:id', isAuthenticated, authenticate, async (req, res) => {
         ...req.body,
       });
     }
-
+    console.log(req.body)
     await Review.create({ 
       user_id: req.user.id, 
       game_id: req.params.id,

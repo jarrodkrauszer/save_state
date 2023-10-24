@@ -30,12 +30,11 @@
     </div>
 
   </div>
-  {{/with}}
-  <form action="/review/{{game.id}}" method="POST" class="comment-form flex-column">
+  <form action="/review/{{id}}" method="POST" class="comment-form flex-column">
     <h1 class="review-header">Fire Your Review</h1>
     <textarea name="review_text" cols="60" rows="5" placeholder="Leave your Review" class="review-area-text"></textarea>
     <input type="hidden" name="title" value="{{name}}">
-    <input type="hidden" name="id" value="{{game.id}}">
+    <input type="hidden" name="id" value="{{id}}">
     <input type="hidden" name="developers" value="{{getValues developers}}">
     <input type="hidden" name="publishers" value="{{getValues publishers}}">
     <input type="hidden" name="description" value="{{description}}">
@@ -45,6 +44,7 @@
     <input type="hidden" name="released_date" value="{{released}}">
     <button class="create-btn">Fire</button>
   </form>
+  {{/with}}
 
   <div class="reviews-shell">
     <h2>Reviews</h2>
