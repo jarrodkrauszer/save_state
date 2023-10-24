@@ -85,6 +85,7 @@ router.get('/review/:id', isAuthenticated, authenticate, async (req, res) => {
           ]
         }
       ],
+      order: [['createdAt', 'DESC']],
     });
 
   res.render('review', {
