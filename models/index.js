@@ -1,6 +1,6 @@
 const Game = require('./Game');
 const Review = require('./Review');
-const User = require('./User OLD');
+const User = require('./User');
 
 Review.belongsTo(User, { foreignKey: 'user_id' });
 User.hasMany(Review, { foreignKey: 'user_id' });
