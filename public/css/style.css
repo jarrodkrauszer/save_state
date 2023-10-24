@@ -9,6 +9,7 @@
 body {
     background-color: var(--theme-color-gray);
     font-family: sans-serif;
+    height: 100vh;
 }
 
 .navbar {
