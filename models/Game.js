@@ -38,7 +38,7 @@ Game.init({
         allowNull: false
     },
     rating: {
-      type: DataTypes.STRING,
+      type: DataTypes.FLOAT(1,3),
       allowNull: false
     },
     publishers: {
