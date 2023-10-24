@@ -49,12 +49,15 @@
   <div class="reviews-shell">
     <h2>Reviews</h2>
     {{#each reviews}}
-    <div class="review">
-      <span>
-          <span class="rendered_text">{{review_text}}</span>
-        </span>
-        <div class="review_publish_date">Published by: {{user.email}}</div>
-    </div>
+    {{!-- <div class="review"> --}}
+      <textarea class="rendered_text" name="review-text" id="" cols="60" rows="5">{{review_text}}
+        Published by: {{user.email}}
+      </textarea>
+      {{!-- <span>
+        <span class="rendered_text">{{review_text}}</span>
+      </span>
+      <div class="review_publish_date">Published by: {{user.email}}</div> --}}
+    {{!-- </div> --}}
     {{/each}}
   </div>
  

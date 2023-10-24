@@ -62,7 +62,7 @@ router.get('/login', (req, res) => {
 router.get('/review/:id', isAuthenticated, authenticate, async (req, res) => {
   try{
     const { data: game } = await axios.get(`${baseURL}/games/${req.params.id}?key=${process.env.API_KEY}`);
-    console.log(game)
+    // console.log(game)
     const reviews = await Review.findAll({
       where: {
         game_id: req.params.id
@@ -171,11 +171,6 @@ router.get('/game', async (req, res) => {
         reviews: reviews.map(r => r.get({ plain: true })),
       });
     }
-    else {
-
-
-    }
-
 
     res.status(200).json({ message: 'Got games!' });
 
@@ -237,7 +232,6 @@ router.get('/top_rated', async (req, res) => {
 });
 
 router.get('/profile', authenticate, async (req, res) => {
-  console.log(req.session.user_id);
 
     const reviews = await Review.findAll({
       where: {
@@ -262,7 +256,38 @@ router.get('/profile', authenticate, async (req, res) => {
       limit: 8
   });
 
+  
+
   res.render('profile', {
+    errors: req.session.errors,
+    user: req.user,
+    reviews: reviews.map(r => r.get({ plain: true })),
+  });
+
+});
+
+router.get('/all', authenticate, async (req, res) => {
+  
+  const reviews = await Review.findAll({
+    include: [
+      {
+        model: User,
+      },
+      {
+        model: Game,
+        attributes: [
+          'id',
+          'title',
+          [literal("substring(description, 1, 100)"), 'description'], // Limit the description field to the first 50 characters
+          'thumbnail',
+          'rating'
+        ]
+      }
+    ],
+    order: [['createdAt', 'DESC']],
+  });
+
+  res.render('landing', {
     errors: req.session.errors,
     user: req.user,
     reviews: reviews.map(r => r.get({ plain: true })),

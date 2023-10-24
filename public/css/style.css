@@ -289,7 +289,7 @@ font-size: larger;
     border-radius: 10px;
     font-size: x-large;
     background-image: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
-};
+}
 
 
 .reviews-shell {
@@ -306,6 +306,11 @@ font-size: larger;
     background-color:rgb(4, 90, 151);
     margin-bottom: 20px;
     font-weight: bold; 
+}
+
+.reviews-shell textarea {
+  background-color:rgb(4, 90, 151);
+  color: rgb(200, 201, 201);
 }
 
 .review_publish_date {
