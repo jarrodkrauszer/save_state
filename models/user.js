@@ -72,4 +72,4 @@ User.init({
     return is_valid;
   }
 
-module.exports = User
+module.exports = User;
