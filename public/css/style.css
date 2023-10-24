@@ -288,7 +288,9 @@ font-size: larger;
     margin-top: 1rem;
     border-radius: 10px;
     font-size: x-large;
-}
+    background-image: linear-gradient(to top, var(--theme-color-blue), var(--theme-color-gray));
+};
+
 
 .reviews-shell {
     width: 800px; 
